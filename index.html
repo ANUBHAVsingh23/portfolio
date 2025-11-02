@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>    Anubhav Singh - Portfolio</title>
+    
+<script src="https://cdn.tailwindcss.com"></script>
+    
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom glow effect for the profile picture to match the template */
+        .profile-glow {
+            box-shadow: 0 0 0 8px rgba(236, 72, 153, 0.2), 0 0 0 16px rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+        }
+        .profile-glow:hover {
+             box-shadow: 0 0 0 12px rgba(236, 72, 153, 0.3), 0 0 0 24px rgba(6, 182, 212, 0.3);
+        }
+        /* Utility to hide the scrollbar but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1e293b',
+                        'secondary-dark': '#334155',
+                        'accent-pink': '#ec4899',
+                        'accent-cyan': '#06b6d4',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+    
+<header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+<a href="#about" class="text-2xl font-extrabold text-accent-cyan tracking-widest hover:text-accent-pink transition duration-300">
+                    ____Portfolio_____
+                </a>
+                
+                
+<div class="hidden sm:ml-6 sm:flex sm:space-x-4">
+                    <a href="#about" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Projects</a>
+                    <a href="#certifications" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Certifications</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Experience</a>
+                    <a href="#achievements" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Achievements</a>
+                    <a href="#education" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Education</a>
+
+                </div>
+
+                
+<button id="menu-button" class="sm:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        
+<div id="mobile-menu" class="sm:hidden hidden pb-2">
+            <div class="px-2 pt-2 space-y-1">
+                <a href="#about" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">About</a>
+                <a href="#skills" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Skills</a>
+                <a href="#projects" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Projects</a>
+                <a href="#certifications" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Certifications</a>
+                <a href="#experience" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Experience</a>
+                <a href="#achievements" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Achievements</a>
+                <a href="#education" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Education</a>
+
+            </div>
+        </div>
+    </header>
+
+    
+<main class="max-w-7xl mx-auto p-4 sm:p-8 space-y-24">
+
+        
+<section id="about" class="text-center pt-16">
+            
+            
+<div class="relative w-48 h-48 mx-auto mb-8">
+                <img 
+                    src="fp.jpg" 
+                    alt="Anubhav Singh Profile" 
+                    class="rounded-full w-full h-full object-cover border-4 border-gray-700 profile-glow"
+                />
+                
+</div>
+
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-white">
+                Anubhav Singh
+            </h1>
+            <p class="text-lg text-gray-400 mb-12">
+                MCA student at Lovely Professional University, specializing in Data Science, AI & Frontend Development
+            </p>
+
+            
+<div class="bg-gray-800 p-6 sm:p-10 rounded-xl shadow-2xl max-w-4xl mx-auto text-left">
+                <h2 class="text-2xl font-semibold mb-4 text-accent-cyan flex items-center">
+                    <span class="mr-2 text-3xl">🧑‍💻</span> About Me
+                </h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Hi, I’m Anubhav Singh, a MCA student at Lovely Professional University, specializing in Data Science, Artificial Intelligence, and Frontend development. I focus on building scalable applications and have a solid foundation in both data science and Frontend development. I am committed to continuously improving my skills in upcoming emerging technologies.
+                </p>
+
+                
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                    <a href="tel:+917380718141" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-pink shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                        <span class="mr-2">📞</span> +91 7380718141
+                    </a>
+                    <a href="mailto:singh.anubhav3945@gmail.com" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-pink shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                        <span class="mr-2">📧</span> singh.anubhav3945@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/anubhav-singh-0a38a6256/" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                        <span class="mr-2">🔗</span> LinkedIn Profile
+                    </a>
+                    <a href="https://github.com/ANUBHAVsingh23" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                        <span class="mr-2">🐱</span> GitHub Profile
+                    </a>
+                    <a href="https://www.instagram.com/singh.anubhav_/" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                        <span class="mr-2">👹</span>Instagram 
+                    </a>
+                </div>
+
+                
+<div class="mt-8 text-center">
+                    <a href="/MCA CV.pdf" download 
+                       class="inline-flex items-center px-8 py-3 bg-accent-pink text-white font-bold rounded-full shadow-lg hover:bg-pink-500 transform hover:scale-105 transition duration-300 text-lg">
+                        <span class="mr-2">⬇️</span> Download My CV
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        
+<section id="skills" class="pt-16">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">🛠 Skills & Technologies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-pink transform hover:scale-[1.05] hover:border-accent-cyan">
+                    <p class="text-xl font-semibold text-accent-pink mb-2">Programming Languages</p>
+                    <p class="text-sm text-gray-300">Python (Advanced), C++, JavaScript (Advanced)</p>
+                </div>
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-cyan transform hover:scale-[1.05] hover:border-accent-pink">
+                    <p class="text-xl font-semibold text-accent-cyan mb-2">Frontend Development</p>
+                    <p class="text-sm text-gray-300">HTML5 (Advanced), CSS3 (Advanced)</p>
+                </div>
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-pink transform hover:scale-[1.05] hover:border-accent-cyan">
+                    <p class="text-xl font-semibold text-accent-pink mb-2">Backend Development</p>
+                    <p class="text-sm text-gray-300">Node.js (Advanced)</p>
+                </div>
+
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-cyan transform hover:scale-[1.05] hover:border-accent-pink">
+                    <p class="text-xl font-semibold text-accent-cyan mb-2">Databases</p>
+                    <p class="text-sm text-gray-300">MySQL (Intermediate)</p>
+                </div>
+            </div>
+        </section>
+
+        
+<section id="projects" class="pt-16">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">💻 Projects</h2>
+            <div class="space-y-10">
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
+                    <h3 class="text-xl font-semibold text-accent-pink mb-2">Car and Bike Rental Service Web App</h3>
+                    <p class="text-sm text-gray-400 mb-3 font-mono">Tech: PHP, MySQL, HTML, CSS, JavaScript, phpMyAdmin.</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Developed a Car and Bike Rental Service web application using PHP and MySQL as part of academic learning in full-stack web development; enabled user registration, login, vehicle browsing, and rental booking for cars and bikes; included an admin dashboard for managing vehicles, bookings, and users; implemented secure login with hashed passwords, prepared statements to prevent SQL injection, and session handling for authentication and access control.
+                    </p>
+                </div>
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-cyan transform hover:scale-[1.02] hover:border-accent-pink">
+                    <h3 class="text-xl font-semibold text-accent-cyan mb-2">Social media effects on Mental health using R / Python programming</h3>
+                    <p class="text-sm text-gray-400 mb-3 font-mono">Tech: R Programming, Python Programming, Descriptive Analytics, Data Preprocessing, Data Preparation, Google forms, Google colab.</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Analyzed the impact of social media on mental health using descriptive analytics; collected survey data from friends, family, and faculty; performed analysis in R with AI/ML algorithms to derive meaningful insights; presented findings through data visualizations to showcase key trends and patterns.
+                    </p>
+                </div>
+
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
+                    <h3 class="text-xl font-semibold text-accent-pink mb-2">Python Auto Typer</h3>
+                    <p class="text-sm text-gray-400 mb-3 font-mono">Tech: Python, PyAutoGUI, Keyboard, Pyperclip.</p>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        A Python script that automates typing text from your clipboard using convenient keyboard shortcuts. This tool is designed to streamline text input, eliminating the need for manual typing.
+                    </p>
+                    <h4 class="text-lg font-medium text-white mb-2">Features:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-400 ml-4 text-sm">
+                        <li>**Clipboard Integration**: Automatically reads the latest text copied to your clipboard.</li>
+                        <li>**Typing Delay**: Initiates typing with a 3-second delay after pressing <code class="bg-gray-700 px-1 rounded">Ctrl+1</code>.</li>
+                        <li>**Pause/Resume Functionality**: Seamlessly toggle between pausing and resuming the typing process using the <code class="bg-gray-700 px-1 rounded">ESC</code> key.</li>
+                        <li>**Visual Feedback**: Provides real-time updates on typing status directly in the console.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        
+<section id="certifications" class="pt-16">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">🎓 Certifications & Courses</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                
+                
+<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-pink transform hover:scale-105 hover:border-accent-cyan">
+                    <p class="text-lg font-semibold text-white">Introduction to Packet Tracer</p>
+                    <p class="text-sm text-gray-400">- by Cisco</p>
+                </div>
+                
+                
+<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-cyan transform hover:scale-105 hover:border-accent-pink">
+                    <p class="text-lg font-semibold text-white">IBM Data Science Specialization</p>
+                    <p class="text-sm text-gray-400">- by IBM</p>
+                </div>
+                
+                
+<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-pink transform hover:scale-105 hover:border-accent-cyan">
+                    <p class="text-lg font-semibold text-white">Introduction to DevOps</p>
+                    <p class="text-sm text-gray-400">- by IBM</p>
+                </div>
+
+                
+<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-cyan transform hover:scale-105 hover:border-accent-pink">
+                    <p class="text-lg font-semibold text-white">SQL Foundation</p>
+                    <p class="text-sm text-gray-400">- by Microsoft</p>
+                </div>
+            </div>
+        </section>
+
+        
+<section id="experience" class="pt-16">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">💼 Experience (Internships & Work)</h2>
+            <div class="space-y-8">
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.01] transition duration-300 hover:border-accent-cyan">
+                    <p class="text-sm text-gray-400">April 15th, 2025 – May 30th, 2025</p>
+                    <h3 class="text-xl font-semibold text-white">Data Analytics Intern</h3>
+                    <p class="text-lg text-accent-cyan mb-3">CODTECH IT SOLUTIONS</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                        <li>Gained hands-on experience in data analysis, data-driven decision-making, and real-world problem-solving.</li>
+                        <li>Worked on exciting projects involving Big Data Analysis and Machine Learning Modeling for predictive analytics using regression.</li>
+                        <li>Developed Interactive Dashboards using Power BI/Tableau to visualize key insights.</li>
+                        <li>Performed Sentiment Analysis using NLP techniques on real-time textual data (tweets and reviews).</li>
+                        <li>Collaborated with the team under the guidance of Neela Santhosh Kumar (Human Resources & Academic Head).</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-400">
+                        <span class="font-bold text-accent-pink">Skills & Tools Used:</span> Data Analytics, Machine Learning, Natural Language Processing (NLP), Power BI, Tableau, Python/R, Big Data Analysis, SQL, Data Visualization, Data-Driven Decision Making.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        
+<section id="achievements" class="pt-16">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">🏆 Competitions, Hackathons, & Achievements</h2>
+            <div class="space-y-6">
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
+                    <h3 class="text-xl font-semibold text-white mb-2">Research Paper Presentation</h3>
+                    <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
+                        <img src="res.jpg" alt="E-Certificate of Participation/Presentation" class="w-full md:w-1/3 rounded-lg shadow-md mb-4 md:mb-0 object-cover max-h-48"/>
+                        <p class="text-gray-300 flex-1">
+                            Presented the research paper titled **"Developing an ANN-Grounded Detection System (IDS) for Cybersecurity"** at the National Conference on Advancing Engineering Frontiers: Innovations, Challenges, and Solutions (AEFICS 2024) organised by Amity School of Engineering and Technology, Amity University, Madhya Pradesh.
+                        </p>
+                    </div>
+                </div>
+                
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-cyan transform hover:scale-[1.02] hover:border-accent-pink">
+                    <h3 class="text-xl font-semibold text-white mb-2">1st Rank in Hackathon</h3>
+                    <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
+                        <img src="hackthon.jpg" alt="Anubhav Singh team at Hackathon" class="w-full md:w-1/3 rounded-lg shadow-md mb-4 md:mb-0 object-cover max-h-48"/>
+                        <p class="text-gray-300 flex-1">
+                            Secured **1st rank** in the Hackathon held in PCTE College Ludhiana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<section id="education" class="pt-16 mb-24">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">📚 Educational Qualifications</h2>
+            <div class="space-y-6">
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-cyan">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-semibold text-white">MCA (Master of Computer Applications) - Pursuing</h3>
+                        <p class="text-sm text-gray-400 font-mono">2025 - Present</p>
+                    </div>
+                    <p class="text-lg text-accent-cyan">Lovely Professional University, Phagwara</p>
+                    <p class="text-sm text-gray-300">Current Status: Pursuing</p>
+                </div>
+
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-cyan hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-pink">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-semibold text-white">BCA (Bachelor of Computer Applications)</h3>
+                        <p class="text-sm text-gray-400 font-mono">2022 - 2025</p>
+                    </div>
+                    <p class="text-lg text-accent-pink">Lovely Professional University, Phagwara</p>
+                    <p class="text-sm text-gray-300">CGPA: 8.06</p>
+                </div>
+
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-cyan">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-semibold text-white">12th Grade</h3>
+                        <p class="text-sm text-gray-400 font-mono">2021 - 2022</p>
+                    </div>
+                    <p class="text-lg text-accent-cyan">Umanath Singh Higher Secondary School, Jaunpur</p>
+                    <p class="text-sm text-gray-300">Percentage: 75%</p>
+                </div>
+
+                
+<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-cyan hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-pink">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-semibold text-white">10th Grade</h3>
+                        <p class="text-sm text-gray-400 font-mono">2019 - 2020</p>
+                    </div>
+                    <p class="text-lg text-accent-pink">Dwivedi Paradise English High School, Dhaurahara</p>
+                    <p class="text-sm text-gray-300">Percentage: 79%</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+        <!-- Gallery Section (moved to file end) -->
+        <section id="gallery" class="pt-16 max-w-7xl mx-auto p-4 sm:p-8">
+            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">📸 Gallery</h2>
+            <p class="text-gray-400 mb-6">Apart from studies, here are some moments captured: Travelling</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="vdm.jpg" alt="Vaisno Devi Temple, Katra" class="w-full max-h-56 object-contain"/>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="ris.jpg" alt="Rishikesh" class="w-full max-h-56 object-contain"/>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="hari.jpg" alt="Haridwar" class="w-full max-h-56 object-contain"/>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="gol.jpg" alt="Golden temple" class="w-full max-h-56 object-contain"/>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="ss.jpg" alt="Soft Skills" class="w-full max-h-56 object-contain"/>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="pd.jpg" alt="Placement days" class="w-full max-h-56 object-contain"/>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="fri.jpg" alt="friends" class="w-full max-h-56 object-contain"/>
+                </div>
+            </div>
+            </div>
+        </section>
+
+    
+<footer class="bg-gray-800 p-4 text-center text-sm text-gray-500">
+        &copy; <span id="current-year"></span> Anubhav Singh. @All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in the footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Mobile Menu Toggle Logic
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth Scrolling Logic for all internal links
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = e.target.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        
+                        // Close mobile menu if open
+                        if (!mobileMenu.classList.contains('hidden')) {
+                             mobileMenu.classList.add('hidden');
+                             menuButton.setAttribute('aria-expanded', 'false');
+                        }
+
+                        if (targetElement) {
+                            // Calculate offset to account for sticky header height
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                            const offsetPosition = elementPosition - headerHeight - 10; // 10px extra padding
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
