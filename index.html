@@ -8,26 +8,157 @@
 <script src="https://cdn.tailwindcss.com"></script>
     
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Space+Grotesk:wght@300..700&display=swap');
+        :root {
+            --accent-teal: #14b8a6;
+            --accent-orange: #f97316;
+            --accent-gold: #facc15;
+            --surface-1: rgba(15, 23, 42, 0.7);
+            --surface-2: rgba(2, 6, 23, 0.85);
+            --stroke: rgba(148, 163, 184, 0.2);
         }
-        /* Custom glow effect for the profile picture to match the template */
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0b1220;
+            color: #e2e8f0;
+        }
+        .display-font {
+            font-family: 'Fraunces', serif;
+            letter-spacing: 0.4px;
+        }
+        .page-bg {
+            background-image:
+                radial-gradient(1200px 600px at 10% -10%, rgba(20, 184, 166, 0.2), transparent 60%),
+                radial-gradient(900px 500px at 90% 0%, rgba(249, 115, 22, 0.25), transparent 55%),
+                radial-gradient(600px 400px at 15% 75%, rgba(56, 189, 248, 0.12), transparent 60%),
+                radial-gradient(500px 380px at 85% 80%, rgba(250, 204, 21, 0.12), transparent 60%),
+                linear-gradient(180deg, #0b1220 0%, #0f172a 45%, #0b1220 100%);
+        }
+        .page-bg::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.35;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 35%);
+            background-size: 64px 64px, 64px 64px, 100% 100%;
+            mix-blend-mode: screen;
+            z-index: -9;
+        }
+        .glass {
+            background: rgba(11, 18, 32, 0.78);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--stroke);
+        }
+        .section-shell {
+            background: linear-gradient(135deg, var(--surface-1), var(--surface-2));
+            border: 1px solid var(--stroke);
+            border-radius: 28px;
+            box-shadow: 0 28px 70px rgba(2, 6, 23, 0.5);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-teal), transparent);
+            opacity: 0.7;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0.6rem;
+            right: 0.6rem;
+            bottom: 0.25rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-orange));
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-link:hover::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(20, 184, 166, 0.4);
+            color: #99f6e4;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(0.5px);
+            opacity: 0.7;
+            animation: float 16s ease-in-out infinite;
+        }
+        .orb.orb-1 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.45), transparent 65%);
+            top: -80px;
+            left: -40px;
+        }
+        .orb.orb-2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.5), transparent 65%);
+            top: 140px;
+            right: -80px;
+            animation-delay: -4s;
+        }
+        .orb.orb-3 {
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.35), transparent 65%);
+            bottom: 120px;
+            left: 18%;
+            animation-delay: -8s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, 20px, 0); }
+        }
+        /* Custom glow effect for the profile picture */
         .profile-glow {
-            box-shadow: 0 0 0 8px rgba(236, 72, 153, 0.2), 0 0 0 16px rgba(6, 182, 212, 0.2);
+            box-shadow: 0 0 0 8px rgba(249, 115, 22, 0.18), 0 0 0 16px rgba(20, 184, 166, 0.18);
             transition: all 0.3s ease;
         }
         .profile-glow:hover {
-             box-shadow: 0 0 0 12px rgba(236, 72, 153, 0.3), 0 0 0 24px rgba(6, 182, 212, 0.3);
+            box-shadow: 0 0 0 12px rgba(249, 115, 22, 0.28), 0 0 0 24px rgba(20, 184, 166, 0.28);
         }
         /* Utility to hide the scrollbar but allow scrolling */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
         .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @media (max-width: 640px) {
+            .section-shell {
+                border-radius: 20px;
+            }
         }
     </style>
     <script>
@@ -35,41 +166,47 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary-dark': '#1e293b',
-                        'secondary-dark': '#334155',
-                        'accent-pink': '#ec4899',
-                        'accent-cyan': '#06b6d4',
+                        'primary-dark': '#0b1220',
+                        'secondary-dark': '#111827',
+                        'accent-pink': '#f97316',
+                        'accent-cyan': '#14b8a6',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="page-bg text-slate-100 relative min-h-screen">
+
+<div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     
-<header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-lg">
+<header class="sticky top-0 z-50 glass shadow-lg">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 
-<a href="#about" class="text-2xl font-extrabold text-accent-cyan tracking-widest hover:text-accent-pink transition duration-300">
+<a href="#about" class="text-xl sm:text-2xl font-extrabold text-accent-cyan tracking-[0.4em] uppercase display-font hover:text-accent-pink transition duration-300">
                     ____Portfolio_____
                 </a>
                 
                 
 <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
-                    <a href="#about" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">About</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Skills</a>
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Projects</a>
-                    <a href="#certifications" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Certifications</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Experience</a>
-                    <a href="#achievements" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Achievements</a>
-                    <a href="#education" class="nav-link text-gray-300 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Education</a>
+                    <a href="#about" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">About</a>
+                    <a href="#skills" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Skills</a>
+                    <a href="#projects" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Projects</a>
+                    <a href="#certifications" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Certifications</a>
+                    <a href="#experience" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Experience</a>
+                    <a href="#achievements" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Achievements</a>
+                    <a href="#education" class="nav-link text-slate-200 hover:text-accent-pink px-3 py-2 rounded-md text-sm font-medium transition duration-200">Education</a>
 
                 </div>
 
                 
-<button id="menu-button" class="sm:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
+<button id="menu-button" class="sm:hidden p-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -80,233 +217,242 @@
         
 <div id="mobile-menu" class="sm:hidden hidden pb-2">
             <div class="px-2 pt-2 space-y-1">
-                <a href="#about" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">About</a>
-                <a href="#skills" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Skills</a>
-                <a href="#projects" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Projects</a>
-                <a href="#certifications" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Certifications</a>
-                <a href="#experience" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Experience</a>
-                <a href="#achievements" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Achievements</a>
-                <a href="#education" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Education</a>
+                <a href="#about" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">About</a>
+                <a href="#skills" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Skills</a>
+                <a href="#projects" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Projects</a>
+                <a href="#certifications" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Certifications</a>
+                <a href="#experience" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Experience</a>
+                <a href="#achievements" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Achievements</a>
+                <a href="#education" class="nav-link block text-slate-200 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md text-base font-medium transition duration-200">Education</a>
 
             </div>
         </div>
     </header>
 
     
-<main class="max-w-7xl mx-auto p-4 sm:p-8 space-y-24">
+<main class="max-w-6xl mx-auto px-4 sm:px-8 pt-8 pb-20 space-y-16 sm:space-y-20 relative z-10">
 
         
-<section id="about" class="text-center pt-16">
-            
-            
-<div class="relative w-48 h-48 mx-auto mb-8">
-                <img 
-                    src="fp.jpg" 
-                    alt="Anubhav Singh Profile" 
-                    class="rounded-full w-full h-full object-cover border-4 border-gray-700 profile-glow"
-                />
-                
-</div>
-
-            <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-white">
-                Anubhav Singh
-            </h1>
-            <p class="text-lg text-gray-400 mb-12">
-                MCA student at Lovely Professional University, specializing in Data Science, AI & Frontend Development
-            </p>
-
-            
-<div class="bg-gray-800 p-6 sm:p-10 rounded-xl shadow-2xl max-w-4xl mx-auto text-left">
-                <h2 class="text-2xl font-semibold mb-4 text-accent-cyan flex items-center">
-                    <span class="mr-2 text-3xl">🧑‍💻</span> About Me
-                </h2>
-                <p class="text-gray-300 leading-relaxed mb-6">
-                    Hi, I’m Anubhav Singh, a MCA student at Lovely Professional University, specializing in Data Science, Artificial Intelligence, and Frontend development. I focus on building scalable applications and have a solid foundation in both data science and Frontend development. I am committed to continuously improving my skills in upcoming emerging technologies.
-                </p>
-
-                
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                    <a href="tel:+917380718141" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-pink shadow-md hover:shadow-lg transform hover:scale-[1.02]">
-                        <span class="mr-2">📞</span> +91 7380718141
-                    </a>
-                    <a href="mailto:singh.anubhav3945@gmail.com" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-pink shadow-md hover:shadow-lg transform hover:scale-[1.02]">
-                        <span class="mr-2">📧</span> singh.anubhav3945@gmail.com
-                    </a>
-                    <a href="https://www.linkedin.com/in/anubhav-singh-0a38a6256/" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
-                        <span class="mr-2">🔗</span> LinkedIn Profile
-                    </a>
-                    <a href="https://github.com/ANUBHAVsingh23" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
-                        <span class="mr-2">🐱</span> GitHub Profile
-                    </a>
-                    <a href="https://www.instagram.com/singh.anubhav_/" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
-                        <span class="mr-2">👹</span>Instagram 
-                    </a>
-                </div>
-
-                
-<div class="mt-8 text-center">
-                    <a href="https://drive.usercontent.google.com/u/0/uc?id=1lXmTH3jTRUR_gpaqk_rhJyImH-P1nGdT&export=download" download 
-                       class="inline-flex items-center px-8 py-3 bg-accent-pink text-white font-bold rounded-full shadow-lg hover:bg-pink-500 transform hover:scale-105 transition duration-300 text-lg">
-                        <span class="mr-2">⬇️</span> Download My CV
-                    </a>
+<section id="about" class="pt-20">
+            <div class="section-shell p-6 sm:p-10">
+                <div class="grid lg:grid-cols-[0.95fr,1.05fr] gap-10 items-center">
+                    <div class="text-left space-y-6">
+                        <div class="relative w-52 h-52">
+                            <img 
+                                src="fp.jpg" 
+                                alt="Anubhav Singh Profile" 
+                                class="rounded-full w-full h-full object-cover border-4 border-slate-700 profile-glow"
+                            />
+                        </div>
+                        <div>
+                            <h1 class="text-4xl sm:text-5xl font-extrabold text-white display-font">
+                                Anubhav Singh
+                            </h1>
+                            <p class="text-lg text-slate-300 mt-3">
+                                MCA student at Lovely Professional University, specializing in Data Science, AI & Frontend Development
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="tel:+917380718141" class="flex items-center justify-center p-3 bg-secondary-dark/80 rounded-lg hover:bg-slate-800 transition duration-300 text-lg font-medium hover:text-accent-pink shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                                <span class="mr-2">📞</span> +91 7380718141
+                            </a>
+                            <a href="mailto:singh.anubhav3945@gmail.com" class="flex items-center justify-center p-3 bg-secondary-dark/80 rounded-lg hover:bg-slate-800 transition duration-300 text-lg font-medium hover:text-accent-pink shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                                <span class="mr-2">📧</span> singh.anubhav3945@gmail.com
+                            </a>
+                            <a href="https://www.linkedin.com/in/anubhav-singh-0a38a6256/" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark/80 rounded-lg hover:bg-slate-800 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                                <span class="mr-2">🔗</span> LinkedIn Profile
+                            </a>
+                            <a href="https://github.com/ANUBHAVsingh23" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark/80 rounded-lg hover:bg-slate-800 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                                <span class="mr-2">🐱</span> GitHub Profile
+                            </a>
+                            <a href="https://www.instagram.com/singh.anubhav_/" target="_blank" class="flex items-center justify-center p-3 bg-secondary-dark/80 rounded-lg hover:bg-slate-800 transition duration-300 text-lg font-medium hover:text-accent-cyan shadow-md hover:shadow-lg transform hover:scale-[1.02]">
+                                <span class="mr-2">👹</span>Instagram 
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://drive.usercontent.google.com/u/0/uc?id=1lXmTH3jTRUR_gpaqk_rhJyImH-P1nGdT&export=download" download 
+                               class="inline-flex items-center px-8 py-3 bg-accent-pink text-white font-bold rounded-full shadow-lg hover:bg-orange-500 transform hover:scale-105 transition duration-300 text-lg">
+                                <span class="mr-2">⬇️</span> Download My CV
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/70 p-6 sm:p-8 rounded-2xl border border-slate-700/60 shadow-xl">
+                        <h2 class="text-2xl font-semibold mb-4 text-accent-cyan flex items-center display-font">
+                            <span class="mr-2 text-3xl">🧑‍💻</span> About Me
+                        </h2>
+                        <p class="text-slate-200 leading-relaxed">
+                            Hi, I’m Anubhav Singh, a MCA student at Lovely Professional University, specializing in Data Science, Artificial Intelligence, and Frontend development. I focus on building scalable applications and have a solid foundation in both data science and Frontend development. I am committed to continuously improving my skills in upcoming emerging technologies.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
         
         
 <section id="skills" class="pt-16">
-            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">🛠 Skills & Technologies</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-pink transform hover:scale-[1.05] hover:border-accent-cyan">
-                    <p class="text-xl font-semibold text-accent-pink mb-2">Programming Languages</p>
-                    <p class="text-sm text-gray-300">Python (Advanced), C++, JavaScript (Advanced)</p>
-                </div>
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-cyan transform hover:scale-[1.05] hover:border-accent-pink">
-                    <p class="text-xl font-semibold text-accent-cyan mb-2">Frontend Development</p>
-                    <p class="text-sm text-gray-300">HTML5 (Advanced), CSS3 (Advanced)</p>
-                </div>
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-pink transform hover:scale-[1.05] hover:border-accent-cyan">
-                    <p class="text-xl font-semibold text-accent-pink mb-2">Backend Development</p>
-                    <p class="text-sm text-gray-300">Node.js (Advanced)</p>
-                </div>
+            <div class="section-shell p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">🛠 Skills & Technologies</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 hover:bg-slate-900 transition duration-300 border-t-4 border-accent-pink transform hover:scale-[1.04] hover:border-accent-cyan">
+                        <p class="text-xl font-semibold text-accent-pink mb-2">Programming Languages</p>
+                        <p class="text-sm text-slate-200">Python (Advanced), C++, JavaScript (Advanced)</p>
+                    </div>
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 hover:bg-slate-900 transition duration-300 border-t-4 border-accent-cyan transform hover:scale-[1.04] hover:border-accent-pink">
+                        <p class="text-xl font-semibold text-accent-cyan mb-2">Frontend Development</p>
+                        <p class="text-sm text-slate-200">HTML5 (Advanced), CSS3 (Advanced)</p>
+                    </div>
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 hover:bg-slate-900 transition duration-300 border-t-4 border-accent-pink transform hover:scale-[1.04] hover:border-accent-cyan">
+                        <p class="text-xl font-semibold text-accent-pink mb-2">Backend Development</p>
+                        <p class="text-sm text-slate-200">Node.js (Advanced)</p>
+                    </div>
 
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-accent-cyan transform hover:scale-[1.05] hover:border-accent-pink">
-                    <p class="text-xl font-semibold text-accent-cyan mb-2">Databases</p>
-                    <p class="text-sm text-gray-300">MySQL (Intermediate)</p>
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 hover:bg-slate-900 transition duration-300 border-t-4 border-accent-cyan transform hover:scale-[1.04] hover:border-accent-pink">
+                        <p class="text-xl font-semibold text-accent-cyan mb-2">Databases</p>
+                        <p class="text-sm text-slate-200">MySQL (Intermediate)</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         
 <section id="projects" class="pt-16">
-            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">💻 Projects</h2>
-            <div class="space-y-10">
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
-                    <h3 class="text-xl font-semibold text-accent-pink mb-2">Car and Bike Rental Service Web App</h3>
-                    <p class="text-sm text-gray-400 mb-3 font-mono">Tech: PHP, MySQL, HTML, CSS, JavaScript, phpMyAdmin.</p>
-                    <p class="text-gray-300 leading-relaxed">
-                        Developed a Car and Bike Rental Service web application using PHP and MySQL as part of academic learning in full-stack web development; enabled user registration, login, vehicle browsing, and rental booking for cars and bikes; included an admin dashboard for managing vehicles, bookings, and users; implemented secure login with hashed passwords, prepared statements to prevent SQL injection, and session handling for authentication and access control.
-                    </p>
-                </div>
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-cyan transform hover:scale-[1.02] hover:border-accent-pink">
-                    <h3 class="text-xl font-semibold text-accent-cyan mb-2">Social media effects on Mental health using R / Python programming</h3>
-                    <p class="text-sm text-gray-400 mb-3 font-mono">Tech: R Programming, Python Programming, Descriptive Analytics, Data Preprocessing, Data Preparation, Google forms, Google colab.</p>
-                    <p class="text-gray-300 leading-relaxed">
-                        Analyzed the impact of social media on mental health using descriptive analytics; collected survey data from friends, family, and faculty; performed analysis in R with AI/ML algorithms to derive meaningful insights; presented findings through data visualizations to showcase key trends and patterns.
-                    </p>
-                </div>
+            <div class="section-shell p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">💻 Projects</h2>
+                <div class="space-y-8">
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-slate-700/50 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
+                        <h3 class="text-xl font-semibold text-accent-pink mb-2">Car and Bike Rental Service Web App</h3>
+                        <p class="text-sm text-slate-300 mb-3 font-mono">Tech: PHP, MySQL, HTML, CSS, JavaScript, phpMyAdmin.</p>
+                        <p class="text-slate-200 leading-relaxed">
+                            Developed a Car and Bike Rental Service web application using PHP and MySQL as part of academic learning in full-stack web development; enabled user registration, login, vehicle browsing, and rental booking for cars and bikes; included an admin dashboard for managing vehicles, bookings, and users; implemented secure login with hashed passwords, prepared statements to prevent SQL injection, and session handling for authentication and access control.
+                        </p>
+                    </div>
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-slate-700/50 border-l-4 border-accent-cyan transform hover:scale-[1.02] hover:border-accent-pink">
+                        <h3 class="text-xl font-semibold text-accent-cyan mb-2">Social media effects on Mental health using R / Python programming</h3>
+                        <p class="text-sm text-slate-300 mb-3 font-mono">Tech: R Programming, Python Programming, Descriptive Analytics, Data Preprocessing, Data Preparation, Google forms, Google colab.</p>
+                        <p class="text-slate-200 leading-relaxed">
+                            Analyzed the impact of social media on mental health using descriptive analytics; collected survey data from friends, family, and faculty; performed analysis in R with AI/ML algorithms to derive meaningful insights; presented findings through data visualizations to showcase key trends and patterns.
+                        </p>
+                    </div>
 
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
-                    <h3 class="text-xl font-semibold text-accent-pink mb-2">Python Auto Typer</h3>
-                    <p class="text-sm text-gray-400 mb-3 font-mono">Tech: Python, PyAutoGUI, Keyboard, Pyperclip.</p>
-                    <p class="text-gray-300 leading-relaxed mb-4">
-                        A Python script that automates typing text from your clipboard using convenient keyboard shortcuts. This tool is designed to streamline text input, eliminating the need for manual typing.
-                    </p>
-                    <h4 class="text-lg font-medium text-white mb-2">Features:</h4>
-                    <ul class="list-disc list-inside space-y-1 text-gray-400 ml-4 text-sm">
-                        <li>**Clipboard Integration**: Automatically reads the latest text copied to your clipboard.</li>
-                        <li>**Typing Delay**: Initiates typing with a 3-second delay after pressing <code class="bg-gray-700 px-1 rounded">Ctrl+1</code>.</li>
-                        <li>**Pause/Resume Functionality**: Seamlessly toggle between pausing and resuming the typing process using the <code class="bg-gray-700 px-1 rounded">ESC</code> key.</li>
-                        <li>**Visual Feedback**: Provides real-time updates on typing status directly in the console.</li>
-                    </ul>
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-slate-700/50 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
+                        <h3 class="text-xl font-semibold text-accent-pink mb-2">Python Auto Typer</h3>
+                        <p class="text-sm text-slate-300 mb-3 font-mono">Tech: Python, PyAutoGUI, Keyboard, Pyperclip.</p>
+                        <p class="text-slate-200 leading-relaxed mb-4">
+                            A Python script that automates typing text from your clipboard using convenient keyboard shortcuts. This tool is designed to streamline text input, eliminating the need for manual typing.
+                        </p>
+                        <h4 class="text-lg font-medium text-white mb-2">Features:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-300 ml-4 text-sm">
+                            <li>**Clipboard Integration**: Automatically reads the latest text copied to your clipboard.</li>
+                            <li>**Typing Delay**: Initiates typing with a 3-second delay after pressing <code class="bg-slate-800 px-1 rounded">Ctrl+1</code>.</li>
+                            <li>**Pause/Resume Functionality**: Seamlessly toggle between pausing and resuming the typing process using the <code class="bg-slate-800 px-1 rounded">ESC</code> key.</li>
+                            <li>**Visual Feedback**: Provides real-time updates on typing status directly in the console.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         
 <section id="certifications" class="pt-16">
-            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">🎓 Certifications & Courses</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                
-                
-<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-pink transform hover:scale-105 hover:border-accent-cyan">
-                    <img src="c1.jpg" alt="Python Data Products for Predictive Analytics" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <p class="text-lg font-semibold text-white">Python Data Products for Predictive Analytics</p>
-                    <p class="text-sm text-gray-400">- by Coursera</p>
-                </div>
-                
-                
-<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-cyan transform hover:scale-105 hover:border-accent-pink">
-                    <img src="c2.jpg" alt="IBM Data Science Specialization" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <p class="text-lg font-semibold text-white">IBM Data Science Specialization</p>
-                    <p class="text-sm text-gray-400">- by IBM</p>
-                </div>
-                
-                
-<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-pink transform hover:scale-105 hover:border-accent-cyan">
-                    <img src="c3.jpg" alt="Introduction to DevOps" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <p class="text-lg font-semibold text-white">Introduction to DevOps</p>
-                    <p class="text-sm text-gray-400">- by IBM</p>
-                </div>
+            <div class="section-shell p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">🎓 Certifications & Courses</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    
+                    
+<a href="c1.jpg" target="_blank" rel="noopener" class="bg-slate-900/70 p-4 rounded-2xl shadow-xl hover:bg-slate-900 transition duration-300 border border-slate-700/50 border-b-2 border-accent-pink transform hover:scale-105 hover:border-accent-cyan block">
+                        <img src="c1.jpg" alt="Python Data Products for Predictive Analytics" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <p class="text-lg font-semibold text-white">Python Data Products for Predictive Analytics</p>
+                        <p class="text-sm text-slate-300">- by Coursera</p>
+                    </a>
+                    
+                    
+<a href="c2.jpg" target="_blank" rel="noopener" class="bg-slate-900/70 p-4 rounded-2xl shadow-xl hover:bg-slate-900 transition duration-300 border border-slate-700/50 border-b-2 border-accent-cyan transform hover:scale-105 hover:border-accent-pink block">
+                        <img src="c2.jpg" alt="IBM Data Science Specialization" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <p class="text-lg font-semibold text-white">IBM Data Science Specialization</p>
+                        <p class="text-sm text-slate-300">- by IBM</p>
+                    </a>
+                    
+                    
+<a href="c3.jpg" target="_blank" rel="noopener" class="bg-slate-900/70 p-4 rounded-2xl shadow-xl hover:bg-slate-900 transition duration-300 border border-slate-700/50 border-b-2 border-accent-pink transform hover:scale-105 hover:border-accent-cyan block">
+                        <img src="c3.jpg" alt="Introduction to DevOps" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <p class="text-lg font-semibold text-white">Introduction to DevOps</p>
+                        <p class="text-sm text-slate-300">- by IBM</p>
+                    </a>
 
-                
-<div class="bg-gray-800 p-4 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 border-b-2 border-accent-cyan transform hover:scale-105 hover:border-accent-pink">
-                    <img src="c4.jpg" alt="SQL Foundation" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <p class="text-lg font-semibold text-white">SQL Foundation</p>
-                    <p class="text-sm text-gray-400">- by Microsoft</p>
+                    
+<a href="c4.jpg" target="_blank" rel="noopener" class="bg-slate-900/70 p-4 rounded-2xl shadow-xl hover:bg-slate-900 transition duration-300 border border-slate-700/50 border-b-2 border-accent-cyan transform hover:scale-105 hover:border-accent-pink block">
+                        <img src="c4.jpg" alt="SQL Foundation" class="w-full h-48 object-cover rounded-xl mb-4">
+                        <p class="text-lg font-semibold text-white">SQL Foundation</p>
+                        <p class="text-sm text-slate-300">- by Microsoft</p>
+                    </a>
                 </div>
             </div>
         </section>
 
         
 <section id="experience" class="pt-16">
-            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">💼 Experience (Internships & Work)</h2>
-            <div class="space-y-8">
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.01] transition duration-300 hover:border-accent-cyan">
-                    <p class="text-sm text-gray-400">April 15th, 2025 – May 30th, 2025</p>
-                    <h3 class="text-xl font-semibold text-white">Data Analytics Intern</h3>
-                    <p class="text-lg text-accent-cyan mb-3">CODTECH IT SOLUTIONS</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
-                        <li>Gained hands-on experience in data analysis, data-driven decision-making, and real-world problem-solving.</li>
-                        <li>Worked on exciting projects involving Big Data Analysis and Machine Learning Modeling for predictive analytics using regression.</li>
-                        <li>Developed Interactive Dashboards using Power BI/Tableau to visualize key insights.</li>
-                        <li>Performed Sentiment Analysis using NLP techniques on real-time textual data (tweets and reviews).</li>
-                        <li>Collaborated with the team under the guidance of Neela Santhosh Kumar (Human Resources & Academic Head).</li>
-                    </ul>
-                    <p class="mt-4 text-sm text-gray-400">
-                        <span class="font-bold text-accent-pink">Skills & Tools Used:</span> Data Analytics, Machine Learning, Natural Language Processing (NLP), Power BI, Tableau, Python/R, Big Data Analysis, SQL, Data Visualization, Data-Driven Decision Making.
-                    </p>
+            <div class="section-shell p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">💼 Experience (Internships & Work)</h2>
+                <div class="space-y-8">
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.01] transition duration-300 hover:border-accent-cyan">
+                        <p class="text-sm text-slate-300">April 15th, 2025 – May 30th, 2025</p>
+                        <h3 class="text-xl font-semibold text-white">Data Analytics Intern</h3>
+                        <p class="text-lg text-accent-cyan mb-3">CODTECH IT SOLUTIONS</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4">
+                            <li>Gained hands-on experience in data analysis, data-driven decision-making, and real-world problem-solving.</li>
+                            <li>Worked on exciting projects involving Big Data Analysis and Machine Learning Modeling for predictive analytics using regression.</li>
+                            <li>Developed Interactive Dashboards using Power BI/Tableau to visualize key insights.</li>
+                            <li>Performed Sentiment Analysis using NLP techniques on real-time textual data (tweets and reviews).</li>
+                            <li>Collaborated with the team under the guidance of Neela Santhosh Kumar (Human Resources & Academic Head).</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-slate-300">
+                            <span class="font-bold text-accent-pink">Skills & Tools Used:</span> Data Analytics, Machine Learning, Natural Language Processing (NLP), Power BI, Tableau, Python/R, Big Data Analysis, SQL, Data Visualization, Data-Driven Decision Making.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
         
 <section id="achievements" class="pt-16">
-            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">🏆 Competitions, Hackathons, & Achievements</h2>
-            <div class="space-y-6">
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
-                    <h3 class="text-xl font-semibold text-white mb-2">Research Paper Presentation</h3>
-                    <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
-                        <img src="res.jpg" alt="E-Certificate of Participation/Presentation" class="w-full md:w-1/3 rounded-lg shadow-md mb-4 md:mb-0 object-cover max-h-48"/>
-                        <p class="text-gray-300 flex-1">
-                            Presented the research paper titled **"Developing an ANN-Grounded Detection System (IDS) for Cybersecurity"** at the National Conference on Advancing Engineering Frontiers: Innovations, Challenges, and Solutions (AEFICS 2024) organised by Amity School of Engineering and Technology, Amity University, Madhya Pradesh.
-                        </p>
+            <div class="section-shell p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">🏆 Competitions, Hackathons, & Achievements</h2>
+                <div class="space-y-6">
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-slate-700/50 border-l-4 border-accent-pink transform hover:scale-[1.02] hover:border-accent-cyan">
+                        <h3 class="text-xl font-semibold text-white mb-2">Research Paper Presentation</h3>
+                        <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
+                            <img src="res.jpg" alt="E-Certificate of Participation/Presentation" class="w-full md:w-1/3 rounded-xl shadow-md mb-4 md:mb-0 object-cover max-h-48"/>
+                            <p class="text-slate-200 flex-1">
+                                Presented the research paper titled **"Developing an ANN-Grounded Detection System (IDS) for Cybersecurity"** at the National Conference on Advancing Engineering Frontiers: Innovations, Challenges, and Solutions (AEFICS 2024) organised by Amity School of Engineering and Technology, Amity University, Madhya Pradesh.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-accent-cyan transform hover:scale-[1.02] hover:border-accent-pink">
-                    <h3 class="text-xl font-semibold text-white mb-2">1st Rank in Hackathon</h3>
-                    <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
-                        <img src="hackthon.jpg" alt="Anubhav Singh team at Hackathon" class="w-full md:w-1/3 rounded-lg shadow-md mb-4 md:mb-0 object-cover max-h-48"/>
-                        <p class="text-gray-300 flex-1">
-                            Secured **1st rank** in the Hackathon held in PCTE College Ludhiana.
-                        </p>
+                    
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-slate-700/50 border-l-4 border-accent-cyan transform hover:scale-[1.02] hover:border-accent-pink">
+                        <h3 class="text-xl font-semibold text-white mb-2">1st Rank in Hackathon</h3>
+                        <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
+                            <img src="hackthon.jpg" alt="Anubhav Singh team at Hackathon" class="w-full md:w-1/3 rounded-xl shadow-md mb-4 md:mb-0 object-cover max-h-48"/>
+                            <p class="text-slate-200 flex-1">
+                                Secured 1st rank in the Hackathon held in
+                                <a href="https://www.google.com/maps/search/?api=1&query=PCTE%20College%2C%20Ludhiana" target="_blank" rel="noopener" class="text-accent-cyan hover:text-accent-pink transition duration-300">PCTE College Ludhiana</a>.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -314,79 +460,99 @@
 
 
 <section id="education" class="pt-16 mb-24">
-            <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">📚 Educational Qualifications</h2>
-            <div class="space-y-6">
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-cyan">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-semibold text-white">MCA (Master of Computer Applications) - Pursuing</h3>
-                        <p class="text-sm text-gray-400 font-mono">2025 - Present</p>
+            <div class="section-shell p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">📚 Educational Qualifications</h2>
+                <div class="space-y-6">
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-cyan">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white">MCA (Master of Computer Applications) - Pursuing</h3>
+                            <p class="text-sm text-slate-300 font-mono">2025 - Present</p>
+                        </div>
+                        <p class="text-lg text-accent-cyan">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Lovely%20Professional%20University%2C%20Phagwara" target="_blank" rel="noopener" class="hover:text-accent-pink transition duration-300">
+                                Lovely Professional University, Phagwara
+                            </a>
+                        </p>
+                        <p class="text-sm text-slate-200">Current Status: Pursuing</p>
                     </div>
-                    <p class="text-lg text-accent-cyan">Lovely Professional University, Phagwara</p>
-                    <p class="text-sm text-gray-300">Current Status: Pursuing</p>
-                </div>
 
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-cyan hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-pink">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-semibold text-white">BCA (Bachelor of Computer Applications)</h3>
-                        <p class="text-sm text-gray-400 font-mono">2022 - 2025</p>
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 border-l-4 border-accent-cyan hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-pink">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white">BCA (Bachelor of Computer Applications)</h3>
+                            <p class="text-sm text-slate-300 font-mono">2022 - 2025</p>
+                        </div>
+                        <p class="text-lg text-accent-pink">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Lovely%20Professional%20University%2C%20Phagwara%2C%20Punjab" target="_blank" rel="noopener" class="hover:text-accent-cyan transition duration-300">
+                                Lovely Professional University, Phagwara, Punjab
+                            </a>
+                        </p>
+                        <p class="text-sm text-slate-200">CGPA: 8.06</p>
                     </div>
-                    <p class="text-lg text-accent-pink">Lovely Professional University, Phagwara</p>
-                    <p class="text-sm text-gray-300">CGPA: 8.06</p>
-                </div>
 
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-cyan">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-semibold text-white">12th Grade</h3>
-                        <p class="text-sm text-gray-400 font-mono">2021 - 2022</p>
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 border-l-4 border-accent-pink hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-cyan">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white">12th Grade</h3>
+                            <p class="text-sm text-slate-300 font-mono">2021 - 2022</p>
+                        </div>
+                        <p class="text-lg text-accent-cyan">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Umanath%20Singh%20Higher%20Secondary%20School%2C%20Jaunpur%2C%20Uttar%20Pradesh" target="_blank" rel="noopener" class="hover:text-accent-pink transition duration-300">
+                                Umanath Singh Higher Secondary School, Jaunpur, Uttar Pradesh
+                            </a>
+                        </p>
+                        <p class="text-sm text-slate-200">Percentage: 70%</p>
                     </div>
-                    <p class="text-lg text-accent-cyan">Umanath Singh Higher Secondary School, Jaunpur</p>
-                    <p class="text-sm text-gray-300">Percentage: 75%</p>
-                </div>
 
-                
-<div class="bg-gray-800 p-6 rounded-xl shadow-xl border-l-4 border-accent-cyan hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-pink">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-semibold text-white">10th Grade</h3>
-                        <p class="text-sm text-gray-400 font-mono">2019 - 2020</p>
+                    
+<div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl border border-slate-700/50 border-l-4 border-accent-cyan hover:shadow-2xl transform hover:scale-[1.02] transition duration-300 hover:border-accent-pink">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white">10th Grade</h3>
+                            <p class="text-sm text-slate-300 font-mono">2019 - 2020</p>
+                        </div>
+                        <p class="text-lg text-accent-pink">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Dwivedi%20Paradise%20English%20High%20School%2C%20Dhaurahara%2C%20Mungra%20Badshahpur%2C%20Uttar%20Pradesh" target="_blank" rel="noopener" class="hover:text-accent-cyan transition duration-300">
+                                Dwivedi Paradise English High School, Dhaurahara, Mungra Badshahpur, Uttar Pradesh
+                            </a>
+                        </p>
+                        <p class="text-sm text-slate-200">Percentage: 80%</p>
                     </div>
-                    <p class="text-lg text-accent-pink">Dwivedi Paradise English High School, Dhaurahara</p>
-                    <p class="text-sm text-gray-300">Percentage: 79%</p>
                 </div>
             </div>
         </section>
 
         
 <section id="contact-us" class="pt-16 mb-24">
-        <h2 class="text-3xl font-bold border-b-2 border-accent-cyan pb-2 mb-8">📞 Contact Us</h2>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-xl max-w-4xl mx-auto">
-            <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4">
-                <input type="hidden" name="_subject" value="New message from your portfolio website">
-                <input type="hidden" name="_cc" value="your-email@example.com">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-300">Your Name</label>
-                    <input type="text" id="name" name="name" required class="mt-1 block w-full p-2 bg-gray-700 text-white rounded-md focus:ring-accent-cyan focus:border-accent-cyan" placeholder="Enter your name">
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-300">Your Email</label>
-                    <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 bg-gray-700 text-white rounded-md focus:ring-accent-cyan focus:border-accent-cyan" placeholder="Enter your email">
-                </div>
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-300">Your Message</label>
-                    <textarea id="message" name="message" rows="4" required class="mt-1 block w-full p-2 bg-gray-700 text-white rounded-md focus:ring-accent-cyan focus:border-accent-cyan" placeholder="Write your message here..."></textarea>
-                </div>
-                <div>
-                    <button type="submit" class="px-4 py-2 bg-accent-pink text-white font-bold rounded-md shadow-md hover:bg-pink-500 transform hover:scale-105 transition duration-300">Send Message</button>
-                </div>
-            </form>
+        <div class="section-shell p-6 sm:p-10">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 section-title display-font">📞 Contact Us</h2>
+            <div class="bg-slate-900/70 p-6 rounded-2xl shadow-xl max-w-4xl mx-auto border border-slate-700/50">
+                <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4">
+                    <input type="hidden" name="_subject" value="New message from your portfolio website">
+                    <input type="hidden" name="_cc" value="your-email@example.com">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-200">Your Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full p-2 bg-slate-800 text-white rounded-md focus:ring-accent-cyan focus:border-accent-cyan" placeholder="Enter your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-200">Your Email</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 bg-slate-800 text-white rounded-md focus:ring-accent-cyan focus:border-accent-cyan" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-200">Your Message</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full p-2 bg-slate-800 text-white rounded-md focus:ring-accent-cyan focus:border-accent-cyan" placeholder="Write your message here..."></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="px-4 py-2 bg-accent-pink text-white font-bold rounded-md shadow-md hover:bg-orange-500 transform hover:scale-105 transition duration-300">Send Message</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
     </main>
 
     
-<footer class="bg-gray-800 p-4 text-center text-sm text-gray-500">
+<footer class="bg-slate-900/80 border-t border-slate-800 p-4 text-center text-sm text-slate-400">
         &copy; <span id="current-year"></span> Anubhav Singh. @All rights reserved.
     </footer>
 
