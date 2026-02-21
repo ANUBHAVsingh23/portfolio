@@ -44,4 +44,5 @@ Notes and tips
 git config --local commit.template COMMIT_TEMPLATE.md
 ```
 
-If you want me to push the repo and enable Pages for you, I can guide you through the steps or help debug any errors you get when running the commands above.
+If you want me to push the repo and enable Pages for you, I can guide you through the steps or help debug any errors you get when running the commands given above
+
