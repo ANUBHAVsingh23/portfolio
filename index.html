@@ -601,67 +601,112 @@
     </section>
 
     <!-- Achievements: original hackthon.jpg and res.jpg -->
-    <section id="achievements" class="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
-      <div class="mb-8 reveal">
-        <p class="eyebrow mb-3">05 — Highlights</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold">Milestones I'm proud of.</h2>
+
+<!-- Achievements: Highlights -->
+<section id="achievements" class="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
+
+  <!-- Section Heading -->
+  <div class="mb-8 reveal">
+    <p class="eyebrow mb-3">05 — Highlights</p>
+    <h2 class="text-3xl sm:text-4xl font-extrabold">
+      Milestones I'm proud of.
+    </h2>
+  </div>
+
+  <!-- Three Equal Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
+
+    <!-- Article 1: Hackathon -->
+    <article class="card p-6 reveal flex flex-col h-full">
+
+      <span class="text-3xl">🏆</span>
+
+      <p class="eyebrow mt-5">Hackathon</p>
+
+      <h3 class="text-xl font-extrabold mt-2">
+        1st Rank
+      </h3>
+
+      <div class="w-full h-56 mt-4 rounded-xl bg-slate-900 flex items-center justify-center overflow-hidden">
+        <img
+          src="hackthon.jpg"
+          alt="Anubhav Singh and team at the hackathon"
+          class="w-full h-full object-contain"
+          loading="lazy"
+        >
       </div>
 
-      <div class="grid md:grid-cols-3 gap-5">
+      <p class="text-slate-400 text-sm leading-6 mt-4 flex-1">
+        Secured first rank in a hackathon held at
+        <a
+          class="text-mint hover:underline"
+          href="https://www.google.com/maps/search/?api=1&query=PCTE%20College%2C%20Ludhiana"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          PCTE College, Ludhiana
+        </a>.
+      </p>
 
-        <!-- Hackathon photo: hackthon.jpg -->
-        <article class="card p-6 reveal">
-          <span class="text-3xl">🏆</span>
-          <p class="eyebrow mt-5">Hackathon</p>
-          <h3 class="text-xl font-extrabold mt-2">1st Rank</h3>
+    </article>
 
-          <img
-            src="hackthon.jpg"
-            alt="Anubhav Singh and team at the hackathon"
-            class="w-full max-h-64 object-contain rounded-xl mt-4 bg-slate-900"
-            loading="lazy"
-          >
+    <!-- Article 2: Research Presentation -->
+    <article class="card p-6 reveal flex flex-col h-full">
 
-          <p class="text-slate-400 text-sm leading-6 mt-3">
-            Secured first rank in a hackathon held at
-            <a class="text-mint hover:underline"
-               href="https://www.google.com/maps/search/?api=1&query=PCTE%20College%2C%20Ludhiana"
-               target="_blank"
-               rel="noopener noreferrer">PCTE College, Ludhiana</a>.
-          </p>
-        </article>
+      <span class="text-3xl">🎤</span>
 
-        <!-- Research paper image: res.jpg -->
-        <article class="card p-6 reveal">
-          <span class="text-3xl">🎤</span>
-          <p class="eyebrow mt-5">Research presentation</p>
-          <h3 class="text-xl font-extrabold mt-2">Cybersecurity IDS</h3>
+      <p class="eyebrow mt-5">Research Presentation</p>
 
-          <img
-            src="res.jpg"
-            alt="Research paper presentation certificate"
-            class="w-full max-h-64 object-contain rounded-xl mt-4 bg-slate-900"
-            loading="lazy"
-          >
+      <h3 class="text-xl font-extrabold mt-2">
+        Cybersecurity IDS
+      </h3>
 
-          <p class="text-slate-400 text-sm leading-6 mt-3">
-            Presented “Developing an ANN-Grounded Detection System (IDS) for Cybersecurity”
-            at AEFICS 2024, Amity University Madhya Pradesh.
-          </p>
-        </article>
-
-        <article class="card p-6 reveal">
-          <span class="text-3xl">🤝</span>
-          <p class="eyebrow mt-5">Conference contribution</p>
-          <h3 class="text-xl font-extrabold mt-2">ICAIIS 2026</h3>
-          <p class="text-slate-400 text-sm leading-6 mt-3">
-            Served as a student committee member and stage/event coordinator,
-            supporting session coordination and event execution.
-          </p>
-        </article>
-
+      <div class="w-full h-56 mt-4 rounded-xl bg-slate-900 flex items-center justify-center overflow-hidden">
+        <img
+          src="res.jpg"
+          alt="Research paper presentation certificate"
+          class="w-full h-full object-contain"
+          loading="lazy"
+        >
       </div>
-    </section>
+
+      <p class="text-slate-400 text-sm leading-6 mt-4 flex-1">
+        Presented “Developing an ANN-Grounded Detection System (IDS) for Cybersecurity”
+        at AEFICS 2024, Amity University Madhya Pradesh.
+      </p>
+
+    </article>
+
+    <!-- Article 3: Conference Contribution -->
+    <article class="card p-6 reveal flex flex-col h-full">
+
+      <span class="text-3xl">🤝</span>
+
+      <p class="eyebrow mt-5">Conference Contribution</p>
+
+      <h3 class="text-xl font-extrabold mt-2">
+        ICAIIS 2026
+      </h3>
+
+      <div class="w-full h-56 mt-4 rounded-xl bg-slate-900 flex items-center justify-center overflow-hidden">
+        <img
+          src="con.jpg"
+          alt="Anubhav Singh at ICAIIS 2026"
+          class="w-full h-full object-contain"
+          loading="lazy"
+        >
+      </div>
+
+      <p class="text-slate-400 text-sm leading-6 mt-4 flex-1">
+        Served as a student committee member and stage/event coordinator,
+        supporting session coordination and event execution.
+      </p>
+
+    </article>
+
+  </div>
+</section>
+
 
     <!-- Certifications: original c1.jpg to c4.jpg -->
     <section id="certifications" class="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
